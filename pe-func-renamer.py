@@ -268,16 +268,16 @@ for api_row in api_matrix:
 			refAddrs = segmentApiImport.getReferencesOfAddress(curAddr)
 			
 			for curRef in refAddrs:
-				seg2 = doc.getSegmentAtAddress(curRef)
-				prIndex = seg2.getProcedureIndexAtAddress(curRef)
+				segCurRef = doc.getSegmentAtAddress(curRef)
+				prIndex = segCurRef.getProcedureIndexAtAddress(curRef)
 				
 				if prIndex > 0:
-					curPr = seg2.getProcedureAtIndex(prIndex)
+					curPr = segCurRef.getProcedureAtIndex(prIndex)
 					curPrEntry = curPr.getEntryPoint()
 					curPrName = doc.getNameAtAddress(curPrEntry)
 					if curPrName.find(sApiCategory) == -1 :
 						doc.setNameAtAddress(curPrEntry,sApiCategory + '_' + curPrName)
-						print '  [-] %s' % curPrName
+						print '     - %s_%s' % (sApiCategory,curPrName)
 				
 doc.refreshView()
 print "[*] pe-func-renamer complete"
