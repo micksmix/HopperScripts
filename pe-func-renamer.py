@@ -276,7 +276,7 @@ for api_row in api_matrix:
 					curPr = segCurRef.getProcedureAtIndex(prIndex)
 					curPrEntry = curPr.getEntryPoint()
 					curPrName = doc.getNameAtAddress(curPrEntry)
-					if curPrName.find(sApiCategory) == -1 :
+					if curPrName != None and curPrName.find(sApiCategory) == -1 :
 						doc.setNameAtAddress(curPrEntry,sApiCategory + '_' + curPrName)
 						print '     - %s_%s' % (sApiCategory,curPrName)
 				
